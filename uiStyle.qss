@@ -1,0 +1,45 @@
+QWidget#centralWidget {
+   background: rgb(230, 207, 152);
+    }
+
+QToolBar{
+    background: rgb(100, 100, 100);
+
+    }
+
+QPushButton{
+    min-width:80px;
+    min-height:32px;
+    color:rgb(255, 255, 255);
+    min-height:20;
+    background-color:rgb(239, 220, 173);
+    border-style:solid;
+    border-top-left-radius:2px;
+    border-top-right-radius:2px;
+
+    border:1px;
+    border-radius:5px;padding:2px 4px;/*border-radius控制圆角大小*/
+    }
+QPushButton:hover{  /*鼠标放上后*/
+    color:rgb(0, 0, 243);
+    min-height:20;
+    border-style:solid;
+    border-top-left-radius:2px;
+    border-top-right-radius:2px;
+    background-color:rgb(32,170,240);
+
+    border:1px;
+    border-radius:5px;padding:2px 4px;
+    }
+QPushButton:pressed{ /*按下按钮后*/
+    color:rgb(0, 0, 243);
+    min-height:20;
+    border-style:solid;
+    border-top-left-radius:2px;
+    border-top-right-radius:2px;
+    background-color:rgb(33,184,240);
+
+    border:1px;
+    border-radius:5px;padding:2px 4px;
+    };
+
