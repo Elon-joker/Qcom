@@ -50,6 +50,7 @@ private slots:
 
     void onRadio();
 
+    void recevie();
 private:
     QVector<double> y,x,y1,y2,y3; // initialize with entries 0..6000
     Ui::MainWindow *ui;
@@ -76,6 +77,8 @@ private:
     QCPGraph *pGraph3;
 
     QButtonGroup *RGroup;
+
+    bool re_statu=false;
 
 };
 

@@ -80,6 +80,7 @@ MainWindow::MainWindow(QWidget *parent) :
        connect(ui->showChar,SIGNAL(clicked()),this,SLOT(istoshowChart()));
        connect(ui->adjustButt,SIGNAL(clicked()),this,SLOT(adPID()));
        connect(ui->clearchar,SIGNAL(clicked()),this,SLOT(clearShowchar()));
+       connect(ui->reButt,SIGNAL(clicked()),this,SLOT(recevie()));
 
        connect(ui->radioButton,SIGNAL(clicked()),this,SLOT(onRadio()));
        connect(ui->radioButton_2,SIGNAL(clicked()),this,SLOT(onRadio()));
@@ -251,7 +252,9 @@ void MainWindow::ReadData()
 //          ui->textBrowser->append("data1:"+data+"\t"+"data2:"+data2);
 //    }
 //    }
-   switch (char_id)
+   //判断接收模式：绘图接收或原始接收
+     if(!re_statu)
+     {switch (char_id)
    {
       case 1:
           pGraph->setVisible(true);
@@ -295,7 +298,10 @@ void MainWindow::ReadData()
        break;
    }
     buf.clear();
-
+  }
+     else {
+         ui->textBrowser->append(buf);
+     }
 }
 
 /**
@@ -486,8 +492,12 @@ void MainWindow::istoshowChart()
 {
     if(ui->showChar->text()==tr("绘制图像"))
        {
+        //退出原始接收
+        re_statu=false;
+        //进入绘图接收
         flage=1;
         ui->showChar->setText("停止绘图");
+
        }
     else {
         flage=0;
@@ -743,4 +753,22 @@ void MainWindow:: onRadio()
                 break;
       }
 //    qDebug()<<RGroup->checkedId();
+}
+
+/**
+ * @function  进入正常接收模式，不做任何校验区别于绘图模式的校验
+ * @param     void
+ * @return    void
+ * @version   2019.12.15
+ * @author    占建
+ * @situation TODO
+ */
+void MainWindow:: recevie()
+{
+    //退出绘图模式
+    flage=0;
+    ui->showChar->setText("绘制图像");
+    //进入正常接收模式
+    re_statu=true;
+
 }
